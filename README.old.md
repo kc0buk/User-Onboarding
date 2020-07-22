@@ -12,7 +12,7 @@ We've seen many different styles of form management by now -- simple to complex.
 - [x] Using `npm`, add the following as dependencies inside your React app:
   - `yup`
   - `axios`
-- [ ] Create a component file called `Form.js`, import it into your `App.js` file, and place the component in your JSX there.
+- [x] Create a component file called `Form.js`, import it into your `App.js` file, and place the component in your JSX there.
 
 ### Task 2a: MVP
 
@@ -36,8 +36,8 @@ Form validation is one of the facets of an application that makes it feel polish
 
 Being able to `POST` data is a key skill of any developer, no matter your skill level.
 
-- [ ] Craft a `POST` request using `axios` that sends your form data to the following endpoint: _`https://reqres.in/api/users`_
-- [ ] Verify using a `console.log()` that you are receiving a successful response back
+- [x] Craft a `POST` request using `axios` that sends your form data to the following endpoint: _`https://reqres.in/api/users`_
+- [x] Verify using a `console.log()` that you are receiving a successful response back
 
 (Note: For those that are curious, we're using [reqres.in](https://reqres.in/) for this assignment's API. It's a free API that allows us to simulate a `POST` request for any data that we send it. Pretty awesome!)
 
@@ -66,5 +66,5 @@ The following are stretch goals that you should attempt _after_ you meet MVP for
 
 ## Submission Format
 
-* [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's  Repo). **Please don't merge your own pull request**
-* [ ] Fill out your module retrospective form [here](https://forms.lambdaschool.com/module-retrospective) with a link to your PR
+* [x] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's  Repo). **Please don't merge your own pull request** (https://github.com/kc0buk/User-Onboarding/pull/1)
+* [x] Fill out your module retrospective form [here](https://forms.lambdaschool.com/module-retrospective) with a link to your PR
