@@ -5,6 +5,7 @@ function Form(props) {
         values,
         submit,
         inputChange,
+        disabled,
         errors,
     } = props
 
@@ -23,7 +24,7 @@ function Form(props) {
         <form className='' onSubmit={onSubmit}>
             <div className=''>
                 <h2>Signup</h2>
-                <button>Submit</button>
+                <button disabled={disabled}>Submit</button>
             </div>
             <div className='errors'>
                 {/* Render Form Validation Errors */}
