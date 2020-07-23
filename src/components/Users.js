@@ -6,7 +6,7 @@ function Users({ details }) {
     }
 
     return (
-        <div className=''>
+        <div className='usersContainer'>
             <pre>{JSON.stringify(details, null, 2)}</pre>
         </div>
     )
