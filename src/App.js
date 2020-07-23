@@ -9,10 +9,16 @@ import './App.css';
 
 const initialFormValues = {
   name: '',
+  email: '',
+  password: '',
+  tos: false,
 }
 
 const initialFormErrors = {
   name: '',
+  email: '',
+  password: '',
+  tos: '',
 }
 
 const initialUsers = []
@@ -59,9 +65,19 @@ function App() {
       })
   }
 
+  const checkboxChange = (name, isChecked) => {
+    setFormValues({
+      ...formValues,
+      [name]: isChecked,
+    })
+  }
+
   const submit = () => {
     const newUser = {
-      name: formValues.name.trim()
+      name: formValues.name.trim(),
+      email: formValues.email.trim(),
+      password: formValues.password.trim(),
+      tos: formValues.tos,
     }
     if (!newUser.name) return
     postNewUser(newUser)
@@ -79,6 +95,7 @@ function App() {
         values={formValues} 
         submit={submit}
         inputChange={inputChange}
+        checkboxChange={checkboxChange}
         disabled={disabled} 
         errors={formErrors}
         />

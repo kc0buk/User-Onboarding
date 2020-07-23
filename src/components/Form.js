@@ -5,6 +5,7 @@ function Form(props) {
         values,
         submit,
         inputChange,
+        checkboxChange,
         disabled,
         errors,
     } = props
@@ -13,6 +14,11 @@ function Form(props) {
         event.preventDefault(
             submit()
         )
+    }
+
+    const onCheckboxChange = event => {
+        const { name, checked } = event.target
+        checkboxChange(name, checked)
     }
 
     const onInputChange = event => {
@@ -42,6 +48,33 @@ function Form(props) {
                         name='name'
                         id='nameInput'
                     />
+                </label>
+                <label htmlFor='emailInput'>Email:&nbsp;
+                    <input 
+                        type='email'
+                        value={values.email}
+                        onChange={onInputChange}
+                        name='email'
+                        id='emailInput'
+                    />
+                </label>
+                <label htmlFor='passwordInput'>Password:&nbsp;
+                    <input 
+                        type='password'
+                        value={values.password}
+                        onChange={onInputChange}
+                        name='password'
+                        id='passwordInput'
+                    />
+                </label>
+                <label htmlFor='tosInput'>Click to accept the terms of service:&nbsp;
+                    <input 
+                        type='checkbox'
+                        name='tos'
+                        checked={values.tos === true}
+                        onChange={onCheckboxChange}
+                    />
+
                 </label>
             </div>
         </form >
