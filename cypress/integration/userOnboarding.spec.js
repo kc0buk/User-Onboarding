@@ -1,0 +1,96 @@
+describe('Inputs and submit button', () => {
+    it('Can navigate to the site', () => {
+        cy.visit('http://localhost:3001/')
+        cy.url().should('include', 'localhost')
+    })
+    it('Submit button is disabled', () => {
+        cy.get('button').should('be.disabled')
+    })
+    it('Can type text for name', () => {
+        cy.get('input[name="name"]')
+            .type('Jose Rodrigeuz')
+            .should('have.value', 'Jose Rodrigeuz')
+    })
+    it('Can type text for email', () => {
+        cy.get('input[name="email"]')
+            .type('email@email.com')
+            .should('have.value', 'email@email.com')
+    })
+    it('Can type text for password', () => {
+        cy.get('input[name="password"]')
+            .type('password')
+            .should('have.value', 'password')
+    })
+    it('Can select checkbox for TOS', () => {
+        cy.get('input[name="tos"]')
+            .click()
+            .should('have.value', 'on')
+    })
+    it('Submit button is no longer disabled & click submit', () => {
+        cy.get('button').should('not.be.disabled').click()
+    })
+})
+
+describe('Form Validation', () => {
+    it('Can navigate to the site', () => {
+        cy.visit('http://localhost:3001/')
+    })
+    it('Submit button is disabled', () => {
+        cy.get('button').should('be.disabled')
+    })
+    it('Trigger name validation error', () => {
+        cy.get('input[name="name"]')
+            .type('  ')
+            .type('{backspace}{backspace}')
+            .should('have.value', '')
+        cy.get('.errors')
+            .contains('Name must be at least one character')
+        cy.get('input[name="name"]').clear()
+            .type('Sam Smith')
+            .should('have.value', 'Sam Smith')
+        cy.get('.errors')
+            .contains('Name must be at least one character').should('not.exist')
+    })
+    it('Trigger email validation error', () => {
+        cy.get('input[name="email"]')
+            .type('email@email')
+            .should('have.value', 'email@email')
+        cy.get('.errors')
+            .contains('Must be a valid email')
+        cy.get('input[name="email"]').clear()
+            .type('sam@some-email.com')
+            .should('have.value','sam@some-email.com')
+        cy.get('.errors')
+            .contains('Must be a valid email').should('not.exist')
+
+    })
+    it('Trigger password validation error', () => {
+        cy.get('input[name="password"]')
+            .type('pass')
+            .should('have.value', 'pass')
+            .clear()        
+        cy.get('.errors')
+            .contains('Password must be at least six characters')
+        cy.get('input[name="password"]')
+            .type('password')
+            .should('have.value', 'password')
+        cy.get('.errors')
+            .contains('Password must be at least six characters').should('not.exist')
+    })
+    it('Can select checkbox for TOS', () => {
+        cy.get('input[name="tos"]')
+            .click()
+            .should('have.value', 'on')
+            .click()
+        cy.get('.errors')
+            .contains('You must agree to the terms of service')
+        cy.get('input[name="tos"]')
+            .click()
+            .should('have.value', 'on')
+        cy.get('.errors')
+            .contains('You must agree to the terms of service').should('not.exist')
+    })
+    // it('Submit button is no longer disabled & click submit', () => {
+    //     cy.get('button').should('not.be.disabled').click()
+    // })
+})

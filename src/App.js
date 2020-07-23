@@ -66,6 +66,21 @@ function App() {
   }
 
   const checkboxChange = (name, isChecked) => {
+    yup
+      .reach(formSchema, name)
+      .validate(isChecked)
+      .then(valid => {
+        setFormErrors({
+          ...formErrors,
+          [name]: '',
+        })
+      })
+      .catch(err => {
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0],
+        })
+      })
     setFormValues({
       ...formValues,
       [name]: isChecked,
